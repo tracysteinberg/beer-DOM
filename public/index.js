@@ -2,6 +2,8 @@ var app = function(){
 
   var url = "https://api.punkapi.com/v2/beers";
   makeRequest(url, requestComplete);
+  // var image_url = "https://images.punkapi.com/v2/keg.png";
+  // makeRequest(image_url, requestComplete);
 
 }
 
@@ -18,6 +20,17 @@ var makeRequest = function(url, callback) {
 
 }
 
+var makeRequestImg = function(image_url, callback) {
+// create a new XMLHttpRequest object
+  var request = new XMLHttpRequest();
+// set the type of request we want to make (HINT:  GET)
+  request.open('GET', image_url);
+// tell the request which function to run when it has completed
+  request.addEventListener('load', callback);
+// send the request
+  request.send();
+
+}
 
 
 var requestComplete = function() {
@@ -33,7 +46,7 @@ var requestComplete = function() {
     select.addEventListener('change', function() {
     var pTag = document.querySelector('#beer-details');
     pTag.innerText = beers[this.value].name;
-    // pTag.innerText += beers[this.value].image;
+    pTag.innerText += beers[this.value].image;
   })
 
 
@@ -44,7 +57,7 @@ var populateList = function(beers) {
 
 
     for (var i = 0; i < beers.length; i++) {
-    // < countries[i]
+   
 
     var option = document.createElement('option');
     option.innerText = beers[i].name;
@@ -55,28 +68,10 @@ var populateList = function(beers) {
     }
 
 
-document.getElementById('btn').addEventListener('click', function() {
-
-  var node = document.getElementById('my-node');
-
-    domtoimage.toPng(node)
-    .then(function(dataUrl) {
-    console.log(dataUrl);
-      //window.open(dataUrl);
-      var img = new Image();
-      img.src = dataUrl;
-      document.getElementById("here-appear-theimages").appendChild(img);
-    })
-    .catch(function(error) {
-      console.error('oops, something went wrong!', error);
-    });
-
-});
-
-}
 
 
 
+};
 
 
 
