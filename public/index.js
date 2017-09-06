@@ -33,7 +33,7 @@ var requestComplete = function() {
     select.addEventListener('change', function() {
     var pTag = document.querySelector('#beer-details');
     pTag.innerText = beers[this.value].name;
-    pTag.innerText += beers[this.value].image;
+    // pTag.innerText += beers[this.value].image;
   })
 
 
@@ -54,6 +54,24 @@ var populateList = function(beers) {
 
     }
 
+
+document.getElementById('btn').addEventListener('click', function() {
+
+  var node = document.getElementById('my-node');
+
+    domtoimage.toPng(node)
+    .then(function(dataUrl) {
+    console.log(dataUrl);
+      //window.open(dataUrl);
+      var img = new Image();
+      img.src = dataUrl;
+      document.getElementById("here-appear-theimages").appendChild(img);
+    })
+    .catch(function(error) {
+      console.error('oops, something went wrong!', error);
+    });
+
+});
 
 }
 
