@@ -2,8 +2,8 @@ var app = function(){
 
   var url = "https://api.punkapi.com/v2/beers";
   makeRequest(url, requestComplete);
-  // var image_url = "https://images.punkapi.com/v2/keg.png";
-  // makeRequest(image_url, requestComplete);
+  var image_url = "https://images.punkapi.com/v2/keg.png";
+  makeRequest(image_url, requestComplete);
 
 }
 
